@@ -1,0 +1,27 @@
+{
+  "name": "marked-media",
+  "version": "0.1.0",
+  "description": "marked renderer to image,sound,youtube .... in markdown.",
+  "main": "marked-media.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "marked",
+    "markdown",
+    "image",
+    "sound",
+    "youtube"
+  ],
+  "author": "airmanx",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
+    "marked": "^4.0.12"
+  }
+}
