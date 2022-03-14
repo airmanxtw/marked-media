@@ -7,7 +7,14 @@ export default function (resourceUrl) {
                 muted: false,
                 title: null,
                 text: null,
-                width: null
+                width: null,
+                height: null,
+                accelerometer: false,
+                "clipboard-write": false,
+                "encrypted-media": false,
+                gyroscope: false,
+                "picture-in-picture": false,
+                allowfullscreen: false,
             };
 
             let titleObj = {};
@@ -15,7 +22,7 @@ export default function (resourceUrl) {
             if (!!title) {
                 title.split(",").forEach(element => {
                     let object = element.split(":");
-                    titleObj[object[0]] = object[1];
+                    titleObj[object[0]] = object.length == 2 ? object[1] : true;
                 });
             }
 
@@ -27,6 +34,17 @@ export default function (resourceUrl) {
                     let autoplay = mediaAttr.autoplay ? ' autoplay' : '';
                     let muted = mediaAttr.muted ? ' muted' : '';
                     return `<audio alt='${text}'${controls}${autoplay}${muted}><source src='${resourceUrl}${href}' type='audio/wav'></audio>`;
+                case 'youtube':
+                    let width = mediaAttr.width != null ? ` width='${mediaAttr.width}'` : '';
+                    let height = mediaAttr.height != null ? ` height='${mediaAttr.height}'` : '';
+                    let accelerometer = mediaAttr.accelerometer ? 'accelerometer;' : '';
+                    let youtubeAutoplay = mediaAttr.autoplay ? 'autoplay;' : '';
+                    let clipboardWrite = mediaAttr["clipboard-write"] ? 'clipboard-write;' : '';
+                    let encryptedMedia = mediaAttr["encrypted-media"] ? 'encrypted-media;' : '';
+                    let gyroscope = mediaAttr.gyroscope ? 'gyroscore;' : ''
+                    let pictureInPicture = mediaAttr["picture-in-picture"] ? 'picture-in-picture;' : '';
+                    let allowfullscreen = mediaAttr.allowfullscreen ? 'allowfullscreen' : '';
+                    return `<iframe${width}${height} src='https://www.youtube.com/embed/${href}' title='YouTube video player' frameborder='0' allow='${accelerometer}${youtubeAutoplay}${clipboardWrite}${encryptedMedia}${gyroscope}${pictureInPicture}' ${allowfullscreen}></iframe>`
                 default:
                     let style = mediaAttr.width != null ? ` style='width:${mediaAttr.width}'` : '';
                     let title = mediaAttr.title != null ? ` title='${mediaAttr.title}'` : '';

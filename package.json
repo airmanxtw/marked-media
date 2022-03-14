@@ -1,6 +1,6 @@
 {
   "name": "marked-media",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "marked renderer to image,sound,youtube .... in markdown.",
   "main": "marked-media.js",
   "scripts": {
